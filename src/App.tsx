@@ -8,7 +8,7 @@ import 'primeflex/primeflex.css';
 import {addLocale, PrimeReactProvider} from "primereact/api";
 import {RefineKbar, RefineKbarProvider} from "@refinedev/kbar";
 import {DevtoolsProvider} from "@refinedev/devtools";
-import routerBindings, {DocumentTitleHandler} from "@refinedev/react-router-v6";
+import routerBindings, {DocumentTitleHandler, NavigateToResource} from "@refinedev/react-router-v6";
 import ru_locale from '../src/locales/ru.json'
 import {ConfirmDialog} from "primereact/confirmdialog";
 import {Layout} from "@/components/layout";
@@ -44,8 +44,12 @@ function App() {
                                             <ToastContainer/>
                                             <Outlet/>
                                         </Layout>
-                                    }
-                                />
+                                    } >
+                                    <Route
+                                        index
+                                        element={<NavigateToResource resource="page"/>}/>
+
+                                </Route>
 
                             </Routes>
                             <RefineKbar/>
@@ -56,7 +60,7 @@ function App() {
                 </RefineKbarProvider>
             </PrimeReactProvider>
         </BrowserRouter>
-    )
+)
 }
 
 export default App
